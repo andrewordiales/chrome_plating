@@ -10,12 +10,20 @@ module ChromePlating
 
       case platform
         when 'linux' then
-          bin_path = File.join bin_path, 'chromedriver', 'linux64', 'chromedriver'
+          bin_path = File.join linux64_path, 'chromedriver'
         when 'darwin' then
-          bin_path = File.join bin_path, 'chromedriver', 'mac', 'chromedriver'
+          bin_path = File.join mac_path, 'chromedriver'
       end
 
       bin_path
+    end
+
+    def mac_path
+      File.join vendor_path, 'chromedriver', 'mac'
+    end
+
+    def linux64_path
+      File.join vendor_path, 'chromedriver', 'linux64'
     end
 
     def vendor_path

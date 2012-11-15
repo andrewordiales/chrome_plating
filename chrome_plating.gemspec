@@ -1,4 +1,4 @@
-$:.push File.expand_path("../lib", __FILE__)
+$:.push File.join File.expand_path(File.dirname(__FILE__)), 'lib'
 
 require 'chrome_plating/version'
 
@@ -14,7 +14,9 @@ Gem::Specification.new do |s|
   s.homepage      = 'http://github.com/andruandru/chrome_plating'
 
   s.require_paths = ['lib']
-  s.files         = Dir.glob("{lib,bin,vendor}/**/*") #`git ls-files`.split("\n")
+  s.files         = Dir.glob("{bin,ext,lib,vendor}/**/*") #`git ls-files`.split("\n")
+  s.extensions    << 'ext/extconf.rb'
+
   s.executables   << 'chromedriver'
 
   s.test_files   = Dir.glob("{spec}/**/*")
